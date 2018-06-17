@@ -1,4 +1,4 @@
-require_relative("../db/sql-runner")
+require_relative("../db/sql_runner")
 
 class Member
 
@@ -8,7 +8,6 @@ def initialize(options)
  @id = options["id"].to_i if options["id"]
  @name = options["name"]
 end
-
 def save()
   sql = "INSERT INTO members
   (
