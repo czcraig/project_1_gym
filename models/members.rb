@@ -9,6 +9,21 @@ def initiliaze(options)
  @name = options["name"]
 end
 
+def save()
+  sql = "INSERT INTO members
+  (
+    name
+  )
+  VALUES
+  (
+    $1
+  )
+  RETURNING id"
+  values = [@name]
+  member = SqlRunner.run( sql, values ).first
+  @id = member['id'].to_i
+end
+
 
 
 
