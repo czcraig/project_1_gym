@@ -1,10 +1,10 @@
-require_relative("../db/sql_runner")
+require_relative("../db/sql-runner")
 
 class Member
 
 attr_reader :id, :name
 
-def initiliaze(options)
+def initialize(options)
  @id = options["id"].to_i if options["id"]
  @name = options["name"]
 end
@@ -24,7 +24,20 @@ def save()
   @id = member['id'].to_i
 end
 
-
+# def save()
+#   sql = "INSERT INTO houses
+#   (
+#     name
+#   )
+#   VALUES
+#   (
+#     $1
+#   )
+#   RETURNING *"
+#   values = [@name]
+#   house_data = SqlRunner.run(sql, values)
+#   @id = house_data.first()['id'].to_i
+# end
 
 
 
