@@ -37,6 +37,11 @@ def delete()
   SqlRunner.run(sql, values)
 end
 
+def self.delete_all()
+    sql = "DELETE FROM members;"
+    SqlRunner.run(sql)
+  end
+
 
 
 
