@@ -45,4 +45,30 @@ attr_reader :id, :gymclass_id, :member_id
     sql = "DELETE FROM bookings;"
     SqlRunner.run(sql)
   end
+
+  # def victim()
+  #     sql = "SELECT * FROM victims
+  #     WHERE id = $1"
+  #     values = [@victim_id]
+  #     results = SqlRunner.run( sql, values )
+  #     return Victim.new( results.first )
+  #   end
+
+  def member()
+     sql = "SELECT * FROM members
+     WHERE id = $1"
+     values = [@member_id]
+     results = SqlRunner.run( sql, values )
+     return Member.new( results.first )
+  end
+
+  def gym_class()
+    sql = "SELECT * FROM gym_classes
+    WHERE id = $1"
+    values = [@gymclass_id]
+    results = SqlRunner.run( sql, values )
+    return GymClass.new( results.first )
+ end
+
+
 end
