@@ -27,4 +27,10 @@ attr_reader :id, :gymclass_id, :member_id
     @id = booking['id'].to_i
   end
 
+  def self.all()
+    sql = "SELECT * FROM bookings"
+    bookings = SqlRunner.run( sql )
+    result = bookings.map { |booking| Booking.new( booking ) }
+    return result
+  end
 end

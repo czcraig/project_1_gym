@@ -34,12 +34,15 @@ require( 'pry-byebug' )
  booking1 = Booking.new({
    "gymclass_id" => gym_class1.id, "member_id" => member1.id
    })
+ booking1.save
  booking2 = Booking.new({
    "gymclass_id" => gym_class2.id, "member_id" => member2.id
    })
+ booking2.save
  booking3 = Booking.new({
    "gymclass_id" => gym_class3.id, "member_id" => member3.id
    })
+ booking3.save
 
 
 
