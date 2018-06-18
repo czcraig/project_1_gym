@@ -23,20 +23,12 @@ def save()
   @id = member['id'].to_i
 end
 
-# def save()
-#   sql = "INSERT INTO houses
-#   (
-#     name
-#   )
-#   VALUES
-#   (
-#     $1
-#   )
-#   RETURNING *"
-#   values = [@name]
-#   house_data = SqlRunner.run(sql, values)
-#   @id = house_data.first()['id'].to_i
-# end
+def self.all()
+  sql = "SELECT * FROM members"
+  members = SqlRunner.run( sql )
+  result = members.map { |member| Member.new( member ) }
+  return result
+end
 
 
 

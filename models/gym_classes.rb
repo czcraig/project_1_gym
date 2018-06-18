@@ -25,9 +25,26 @@ attr_reader :id, :name, :class_time
     @id = gym_class['id'].to_i
   end
 
+  # def update()
+  #   sql = "UPDATE gym_classes
+  #   SET
+  #   (
+  #     name
+  #   ) =
+  #   (
+  #     $1
+  #   )
+  #   WHERE id = $2"
+  #   values = [@name, @id]
+  #   SqlRunner.run( sql, values )
+  # end
 
-
-
+  def self.all()
+    sql = "SELECT * FROM gym_classes"
+    gym_classes = SqlRunner.run( sql )
+    result = gym_classes.map { |gym_class| GymClass.new( gym_class ) }
+    return result
+  end
 
 
 
