@@ -20,19 +20,27 @@ require( 'pry-byebug' )
 
  gym_class1 = GymClass.new({
    "name" => "beginners dodgeball",
-   # "class_time" => "19.30"
    })
  gym_class1.save
  gym_class2 = GymClass.new({
    "name" => "intermediate dodgeball",
-   # "class_time" => "19.30"
    })
  gym_class2.save
  gym_class3 = GymClass.new({
    "name" => "advanced dodgeball",
-   # "class_time" => "19.30"
    })
  gym_class3.save
+
+ booking1 = Booking.new({
+   "gymclass_id" => gym_class1.id, "member_id" => member1.id
+   })
+ booking2 = Booking.new({
+   "gymclass_id" => gym_class2.id, "member_id" => member2.id
+   })
+ booking3 = Booking.new({
+   "gymclass_id" => gym_class3.id, "member_id" => member3.id
+   })
+
 
 
 

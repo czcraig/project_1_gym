@@ -11,5 +11,20 @@ attr_reader :id, :gymclass_id, :member_id
     @member_id = options["member_id"].to_i
   end
 
+  def save()
+    sql = "INSERT INTO bookings
+    (
+      gymclass_id,
+      member_id
+    )
+    VALUES
+    (
+      $1, $2
+    )
+    RETURNING id"
+    values = [@gymclass_id, @member_id]
+     booking= SqlRunner.run( sql, values ).first
+    @id = booking['id'].to_i
+  end
 
 end
