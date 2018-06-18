@@ -33,4 +33,11 @@ attr_reader :id, :gymclass_id, :member_id
     result = bookings.map { |booking| Booking.new( booking ) }
     return result
   end
+
+  def delete()
+    sql = "DELETE FROM bookings
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 end
