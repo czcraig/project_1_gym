@@ -42,7 +42,13 @@ def self.delete_all()
     SqlRunner.run(sql)
   end
 
-
+  def self.find( id )
+    sql = "SELECT * FROM members WHERE id = $1"
+    values = [id]
+    member = SqlRunner.run(  sql, values )
+    result = Member.new( member.first )
+    return result
+  end
 
 
 

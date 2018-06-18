@@ -3,6 +3,10 @@ require_relative("../models/gym_classes")
 require_relative("../models/members")
 require( 'pry-byebug' )
 
+Booking.delete_all
+Member.delete_all
+GymClass.delete_all
+
  member1 = Member.new({
    "name" => "chris"
    })

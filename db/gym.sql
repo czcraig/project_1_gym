@@ -2,6 +2,7 @@ DROP TABLE bookings;
 DROP TABLE members;
 DROP TABLE gym_classes;
 
+
 CREATE TABLE members (
   id serial4 PRIMARY KEY,
   name VARCHAR(255)

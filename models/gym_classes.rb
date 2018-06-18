@@ -25,19 +25,6 @@ attr_reader :id, :name, :class_time
     @id = gym_class['id'].to_i
   end
 
-  # def update()
-  #   sql = "UPDATE gym_classes
-  #   SET
-  #   (
-  #     name
-  #   ) =
-  #   (
-  #     $1
-  #   )
-  #   WHERE id = $2"
-  #   values = [@name, @id]
-  #   SqlRunner.run( sql, values )
-  # end
 
   def self.all()
     sql = "SELECT * FROM gym_classes"
@@ -58,7 +45,27 @@ attr_reader :id, :name, :class_time
      SqlRunner.run(sql)
    end
 
+   # def update()
+   #   sql = "UPDATE gym_classes
+   #   SET
+   #   (
+   #     name
+   #   ) =
+   #   (
+   #     $1
+   #   )
+   #   WHERE id = $2"
+   #   values = [@name, @id]
+   #   SqlRunner.run( sql, values )
+   # end
 
+   def self.find( id )
+  sql = "SELECT * FROM gym_classes WHERE id = $1"
+  values = [id]
+  gym_class = SqlRunner.run( sql, values )
+  result = GymClass.new( gym_class.first )
+  return result
+end
 
 
 
