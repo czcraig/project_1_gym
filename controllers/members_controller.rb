@@ -13,11 +13,18 @@ end
 # new
 get '/members/new' do
   @classes = GymClass.all()
-  erb( :'members/create' )
+  erb( :'members/new' )
 end
 
 # SHOW
 get '/members/:id' do
   @member = Member.find(params[:id].to_i())
   erb( :'members/show' )
+end
+
+# create
+post '/members' do
+ @member = Member.new(params)
+ @member.save
+ erb( :'members/create')
 end
