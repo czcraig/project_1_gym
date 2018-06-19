@@ -28,3 +28,18 @@ post '/gym_classes' do
  @gym_class.save
  erb( :'gym_classes/create')
 end
+
+
+#delete
+post '/gym_classes/:id/delete' do
+gym_class = GymClass.find( params[:id] )
+gym_class.delete()
+redirect to '/gym_classes'
+end
+
+
+#update
+post '/gym_classes/:id' do # update
+  GymClass.new( params ).update
+  redirect to '/gym_classes'
+end

@@ -28,3 +28,9 @@ post '/members' do
  @member.save
  erb( :'members/create')
 end
+
+#EDIT
+get '/members/:id/edit' do
+  @member = Member.find( params[:id] )
+  erb( :edit )
+end
