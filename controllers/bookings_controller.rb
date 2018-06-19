@@ -13,3 +13,19 @@ get '/bookings' do
   @gym_class = GymClass.all()
   erb(:'bookings/index')
 end
+
+#NEW
+
+get '/bookings/new' do
+  @gym_classes = GymClass.all
+  @members = Member.all
+  erb( :'bookings/new')
+end
+
+#CREATE
+
+post '/bookings' do
+  booking = Booking.new(params)
+  booking.save
+  redirect to("/bookings")
+end
