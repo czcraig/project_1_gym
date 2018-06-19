@@ -9,5 +9,7 @@ also_reload( './models/*' )
 # HOMEPAGE
 get '/bookings' do
   @bookings = Booking.all()
+  @member = Member.all()
+  @gym_class = GymClass.all()
   erb(:'bookings/index')
 end
