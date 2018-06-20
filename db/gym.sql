@@ -9,7 +9,8 @@ CREATE TABLE members (
 );
 CREATE TABLE gym_classes (
   id serial4 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  spaces_available INT4
 );
 CREATE TABLE bookings (
   id serial4 PRIMARY KEY,

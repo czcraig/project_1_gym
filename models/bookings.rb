@@ -3,12 +3,13 @@ require_relative("../db/sql_runner")
 
 class Booking
 
-attr_reader :id, :gymclass_id, :member_id
+attr_accessor :id, :gymclass_id, :member_id, :spaces_available
 
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @gymclass_id = options["gymclass_id"].to_i
     @member_id = options["member_id"].to_i
+
   end
 
   def save()
@@ -46,14 +47,6 @@ attr_reader :id, :gymclass_id, :member_id
     SqlRunner.run(sql)
   end
 
-  # def victim()
-  #     sql = "SELECT * FROM victims
-  #     WHERE id = $1"
-  #     values = [@victim_id]
-  #     results = SqlRunner.run( sql, values )
-  #     return Victim.new( results.first )
-  #   end
-
   def member()
      sql = "SELECT * FROM members
      WHERE id = $1"
@@ -69,6 +62,7 @@ attr_reader :id, :gymclass_id, :member_id
     results = SqlRunner.run( sql, values )
     return GymClass.new( results.first )
  end
+
 
 
 end

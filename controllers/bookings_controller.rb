@@ -25,7 +25,17 @@ end
 #CREATE
 
 post '/bookings' do
-  booking = Booking.new(params)
-  booking.save
-  redirect to("/bookings")
+  gym_class = GymClass.find(params['gymclass_id'])
+  if !gym_class.is_full?
+    gym_class.book_gym_class
+    booking = Booking.new(params)
+    booking.save
+    redirect to("/bookings")
+  else
+    redirect to("/bookings/error")
+  end
+end
+
+get '/bookings/error' do
+  erb(:'bookings/error')
 end

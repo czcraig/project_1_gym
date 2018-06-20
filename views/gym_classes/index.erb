@@ -1,5 +1,6 @@
 <% for gym_class in @gym_classes %>
 
   <p>Name: <%= gym_class.name() %> </p>
+  <p>Spaces Available: <%=gym_class.spaces_available  %>
   <hr/>
 <% end %>

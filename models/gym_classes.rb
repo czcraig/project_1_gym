@@ -2,26 +2,27 @@ require_relative("../db/sql_runner")
 
 class GymClass
 
-attr_reader :id, :name
+attr_accessor :id, :name, :spaces_available
 #attr_accessor :name
 
 
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @name = options["name"]
+    @spaces_available = options["spaces_available"].to_i
   end
 
   def save()
     sql = "INSERT INTO gym_classes
     (
-      name
+      name, spaces_available
     )
     VALUES
     (
-      $1
+      $1, $2
     )
     RETURNING id"
-    values = [@name]
+    values = [@name, @spaces_available]
     gym_class = SqlRunner.run( sql, values ).first
     @id = gym_class['id'].to_i
   end
@@ -48,9 +49,15 @@ attr_reader :id, :name
 
    def update()
      sql = "UPDATE gym_classes
-     SET name = $1
-     WHERE id = $2"
-     values = [@name, @id]
+     SET
+     (
+       name, spaces_available
+     ) =
+     (
+      $1, $2
+     )
+     WHERE id = $3"
+     values = [@name, @spaces_available, @id]
      SqlRunner.run( sql, values )
    end
 
@@ -71,8 +78,14 @@ def members()
   return results.map { |member| Member.new(member) }
 end
 
+def book_gym_class()
+    @spaces_available -= 1
+    update()
+end
 
-
+def is_full?
+  return @spaces_available <= 0
+end
 
 
 
