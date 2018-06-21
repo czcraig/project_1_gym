@@ -3,24 +3,25 @@ require_relative("../db/sql_runner")
 class Member
 
 attr_reader :id
-attr_accessor :name
+attr_accessor :name, :age
 
 def initialize(options)
  @id = options["id"].to_i if options["id"]
  @name = options["name"]
+ @age = options["age"].to_i
 end
 def save()
   sql = "INSERT INTO members
   (
-    name
+    name, age
   )
   VALUES
   (
-    $1
+    $1, $2
   )
   RETURNING id"
-  values = [@name]
-  member = SqlRunner.run( sql, values ).first
+  values = [@name, @age]
+  member = SqlRunner.run(sql, values).first
   @id = member['id'].to_i
 end
 
@@ -53,9 +54,15 @@ def self.delete_all()
 
   def update()
     sql = "UPDATE members
-    SET name = $1
-    WHERE id = $2"
-    values = [@name, @id]
+    SET
+    (
+      name, age
+    ) =
+    (
+      $1, $2
+    )
+    WHERE id = $3"
+    values = [@name, @age, @id]
     SqlRunner.run( sql, values )
   end
 

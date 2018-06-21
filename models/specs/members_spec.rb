@@ -4,7 +4,7 @@ require_relative("../members.rb")
 class TestMember < MiniTest::Test
 
   def setup
-   options = {"name" => "chris"}
+   options = {"name" => "chris", "age" => 29}
  @member = Member.new(options)
   end
 
@@ -13,6 +13,8 @@ class TestMember < MiniTest::Test
   assert_equal("chris", result)
  end
 
-
-
+ def test_member_age
+   result = @member.age
+  assert_equal(29, result)
+ end
 end

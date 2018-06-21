@@ -8,95 +8,122 @@ Member.delete_all
 GymClass.delete_all
 
  member1 = Member.new({
-   "name" => "Chris Craig"
+   "name" => "Chris Craig",
+   "age" => 29
    })
  member1.save()
 
  member2 = Member.new({
-   "name" => "Steve the Pirate"
+   "name" => "Steve the Pirate",
+   "age" => 35
    })
  member2.save()
 
  member3 = Member.new({
-   "name" => "Peter La Fleur"
+   "name" => "Peter La Fleur",
+   "age" => 39
    })
  member3.save()
 
  member4 = Member.new({
-   "name" => "Patches O'Houlihan"
+   "name" => "Patches O'Houlihan",
+   "age" => 63
    })
  member4.save()
 
  member5 = Member.new({
-   "name" => "Kate Veatch"
+   "name" => "Kate Veatch",
+   "age" => 35
    })
  member5.save()
 
  member6 = Member.new({
-   "name" => "Gordon"
+   "name" => "Gordon",
+   "age" => 21
    })
  member6.save()
 
  member7 = Member.new({
-   "name" => "Justin"
+   "name" => "Justin",
+   "age" => 18
    })
  member7.save()
 
  member8 = Member.new({
-   "name" => "Me'Shell Jones"
+   "name" => "Me'Shell Jones",
+   "age" => 36
    })
  member8.save()
 
  member9 = Member.new({
-   "name" => "White Goodman"
+   "name" => "White Goodman",
+   "age" => 35
    })
  member9.save()
 
  member10 = Member.new({
-   "name" => "Dwight"
+   "name" => "Dwight",
+   "age" => 31
    })
  member10.save()
 
  member11 = Member.new({
-   "name" => "Owen"
+   "name" => "Owen",
+   "age" => 24
    })
  member11.save()
 
  member12 = Member.new({
-   "name" => "Fran Stalinovskovichdavidovitchsky"
+   "name" => "Fran Stalinovskovichdavidovitchsky",
+   "age" => 32
    })
  member12.save()
 
  member13 = Member.new({
-   "name" => "Blade"
+   "name" => "Blade",
+   "age" => 28
    })
  member13.save()
 
  member14 = Member.new({
-   "name" => "Lazer"
+   "name" => "Lazer",
+   "age" => 17
    })
  member14.save()
 
  member15 = Member.new({
-   "name" => "Blazer"
+   "name" => "Blazer",
+   "age" => 26
    })
  member15.save()
 
  gym_class1 = GymClass.new({
    "name" => "beginners dodgeball",
-   "spaces_available" => 10
+   "spaces_available" => 10,
+    "minimum_age" => 10
    })
  gym_class1.save
+
  gym_class2 = GymClass.new({
    "name" => "intermediate dodgeball",
-   "spaces_available" => 10
+   "spaces_available" => 10,
+    "minimum_age" => 10
    })
  gym_class2.save
+
  gym_class3 = GymClass.new({
    "name" => "advanced dodgeball",
-   "spaces_available" => 10
+   "spaces_available" => 10,
+    "minimum_age" => 10
    })
  gym_class3.save
+
+ gym_class4 = GymClass.new({
+   "name" => "expert level Patches O'Houlihan dodgeball",
+   "spaces_available" => 10,
+   "minimum_age" => 18
+   })
+ gym_class4.save
 
  booking1 = Booking.new({
    "gymclass_id" => gym_class1.id, "member_id" => member1.id

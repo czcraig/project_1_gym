@@ -26,7 +26,8 @@ end
 
 post '/bookings' do
   gym_class = GymClass.find(params['gymclass_id'])
-  if !gym_class.is_full?
+  member = Member.find(params['member_id'])
+  if !gym_class.is_full? && !gym_class.member_too_young(member)
     gym_class.book_gym_class
     booking = Booking.new(params)
     booking.save

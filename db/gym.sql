@@ -5,12 +5,14 @@ DROP TABLE gym_classes;
 
 CREATE TABLE members (
   id serial4 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  age NUMERIC
 );
 CREATE TABLE gym_classes (
   id serial4 PRIMARY KEY,
   name VARCHAR(255),
-  spaces_available INT4
+  spaces_available INT4,
+  minimum_age NUMERIC
 );
 CREATE TABLE bookings (
   id serial4 PRIMARY KEY,

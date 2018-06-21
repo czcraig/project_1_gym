@@ -4,7 +4,8 @@ require_relative("../gym_classes.rb")
 class TestMember < MiniTest::Test
 
   def setup
-    options = {"name" => "beginners dodgeball", "spaces_available" => 10}
+    options = {"name" => "beginners dodgeball", "spaces_available" => 10,
+    "minimum_age" => 18}
     @gym_class = GymClass.new(options)
   end
 
@@ -22,6 +23,11 @@ class TestMember < MiniTest::Test
     @gym_class.book_gym_class
     result = @gym_class.spaces_available()
     assert_equal(9, result)
+  end
+
+  def test_minimum_age
+    result = @gym_class.minimum_age
+    assert_equal(18, result)
   end
 
 

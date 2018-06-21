@@ -2,27 +2,27 @@ require_relative("../db/sql_runner")
 
 class GymClass
 
-attr_accessor :id, :name, :spaces_available
+attr_accessor :id, :name, :spaces_available, :minimum_age
 #attr_accessor :name
-
 
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @name = options["name"]
     @spaces_available = options["spaces_available"].to_i
+    @minimum_age = options["minimum_age"].to_i
   end
 
   def save()
     sql = "INSERT INTO gym_classes
     (
-      name, spaces_available
+      name, spaces_available, minimum_age
     )
     VALUES
     (
-      $1, $2
+      $1, $2, $3
     )
     RETURNING id"
-    values = [@name, @spaces_available]
+    values = [@name, @spaces_available, @minimum_age]
     gym_class = SqlRunner.run( sql, values ).first
     @id = gym_class['id'].to_i
   end
@@ -51,13 +51,13 @@ attr_accessor :id, :name, :spaces_available
      sql = "UPDATE gym_classes
      SET
      (
-       name, spaces_available
+       name, spaces_available, minimum_age
      ) =
      (
-      $1, $2
+      $1, $2, $3
      )
-     WHERE id = $3"
-     values = [@name, @spaces_available, @id]
+     WHERE id = $4"
+     values = [@name, @spaces_available, @minimum_age, @id]
      SqlRunner.run( sql, values )
    end
 
@@ -85,6 +85,10 @@ end
 
 def is_full?
   return @spaces_available <= 0
+end
+
+def member_too_young(member)
+    return member.age < @minimum_age
 end
 
 
