@@ -1,4 +1,9 @@
 <% for booking in @bookings %>
  <p>Member Name: <%= booking.member.name() %> </p>
  <p>Gym Class Name: <%= booking.gym_class.name() %> </p>
+
+ <form method="post" action="/bookings/<%= booking.id %>/delete">
+  <input type="submit" value="Delete Booking"/>
+</form>
+ <hr/>
 <% end  %>

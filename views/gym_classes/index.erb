@@ -3,5 +3,11 @@
   <p>Name: <%= gym_class.name() %> </p>
   <p>Spaces Available: <%=gym_class.spaces_available  %>
   <p>Minimum Age: <%= gym_class.minimum_age() %>
+
+
+
+   <form method="post" action="/gym_classes/<%= gym_class.id %>/delete">
+    <input type="submit" value="Delete Class"/>
+  </form>
   <hr/>
 <% end %>

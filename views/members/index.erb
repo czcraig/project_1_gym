@@ -2,5 +2,11 @@
 
   <p>Name: <%= member.name() %> </p>
   <p>Age: <%= member.age()  %> </p>
-  <hr/>
+
+
+  <form method="post" action="/members/<%= member.id %>/edit">
+   <input type="submit" value="Edit Member"/>
+ </form>
+ <hr/>
+
 <% end %>

@@ -63,6 +63,13 @@ attr_accessor :id, :gymclass_id, :member_id, :spaces_available
     return GymClass.new( results.first )
  end
 
+ def self.find( id )
+   sql = "SELECT * FROM bookings WHERE id = $1"
+   values = [id]
+   booking = SqlRunner.run(  sql, values )
+   result = Booking.new( booking.first )
+   return result
+ end
 
 
 end

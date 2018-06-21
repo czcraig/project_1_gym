@@ -40,3 +40,10 @@ end
 get '/bookings/error' do
   erb(:'bookings/error')
 end
+
+#delete
+post '/bookings/:id/delete' do
+booking = Booking.find( params[:id] )
+booking.delete()
+redirect to '/bookings'
+end
