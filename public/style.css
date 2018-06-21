@@ -1,10 +1,36 @@
 html {
   background-color: #eee;
 }
+/*
+body {
+  padding: 30px;
+  font-family: 'Rye';
+  background-image: url("average_joes_image.jpg");
+} */
+
 a {
   text-decoration: none;
   font: 20px helvetica;
-  padding: 10px;
-  color: salmon;
+  padding: 30px;
+  color: rgb(247, 5, 5);
 
+}
+
+nav {
+  background-color: rgb(255, 214, 40);
+  color: rgb(255, 207, 0);
+}
+
+body {
+  color
+}
+
+
+
+.joe-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-repeat: repeat-y;
 }

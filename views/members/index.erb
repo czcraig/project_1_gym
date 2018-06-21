@@ -4,7 +4,7 @@
   <p>Age: <%= member.age()  %> </p>
 
 
-  <form method="post" action="/members/<%= member.id %>/edit">
+  <form method="get" action="/members/<%= member.id %>/edit">
    <input type="submit" value="Edit Member"/>
  </form>
  <hr/>
